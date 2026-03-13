@@ -69,6 +69,7 @@ export default function ChatPage() {
       formData.append("symptoms", content);
       formData.append("age", demographics.age || "25");
       formData.append("gender", demographics.gender || "male");
+      formData.append("patient_name", demographics.name || "Unknown");
       formData.append("worker_id", "00000000-0000-0000-0000-000000000000"); 
       if (file) formData.append("file", file);
 

@@ -58,7 +58,7 @@ Respond ONLY in this JSON format:
                 API_URL,
                 headers=headers,
                 json={
-                    "model": "mistralai/Mistral-7B-Instruct-v0.2", # Using stable Mistral v0.2
+                    "model": "meta-llama/Llama-3.1-8B-Instruct", # Switching to Llama-3.1 for stability on HF Router
                     "messages": messages,
                     "max_tokens": 500,
                     "temperature": 0.1,

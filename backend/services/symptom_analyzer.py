@@ -43,7 +43,7 @@ async def analyze_symptoms(request: SymptomRequest):
                 API_URL, 
                 headers=headers, 
                 json={
-                    "model": "mistralai/Mistral-7B-Instruct-v0.2",
+                    "model": "meta-llama/Llama-3.1-8B-Instruct",
                     "messages": messages,
                     "max_tokens": 500,
                     "temperature": 0.1,
