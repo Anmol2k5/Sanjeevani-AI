@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap";
 @import "tailwindcss";
 
 @theme {
@@ -32,16 +32,26 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  --color-medical-green: var(--medical-green);
-  --color-medical-urgent: var(--medical-urgent);
-  --color-medical-medium: var(--medical-medium);
-  --color-medical-low: var(--medical-low);
+  /* Hospital Theme Colors */
+  --color-hospital-blue-primary: #0066CC;
+  --color-hospital-blue-dark: #004C99;
+  --color-hospital-blue-light: #E6F2FF;
+  --color-hospital-green: #00C853;
+  --color-hospital-green-light: #E8F5E9;
+  --color-medical-urgent: #EF4444;
+  --color-medical-medium: #F59E0B;
+  --color-medical-low: #10B981;
+  --color-medical-green: #10B981;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
+  /* Animations */
   --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+  --animate-pulse-slow: pulse-slow 4s ease-in-out infinite;
+  --animate-heartbeat: heartbeat 1.5s ease-in-out infinite;
+  --animate-slide-up: slide-up 0.5s ease-out;
 
   @keyframes pulse-glow {
     0%, 100% {
@@ -49,6 +59,40 @@
     }
     50% {
       opacity: 0.8;
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    10%, 30% {
+      transform: scale(1.1);
+    }
+    20%, 40% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
@@ -64,7 +108,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 10%;
 
-    --primary: 243 75% 59%;
+    --primary: 213 94% 45%; /* Hospital Blue */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96%;
@@ -73,7 +117,7 @@
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 160 84% 39%;
+    --accent: 143 76% 39%; /* Hospital Green */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -81,38 +125,38 @@
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 243 75% 59%;
+    --ring: 213 94% 45%;
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 222 47% 11%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 3.9%;
+    --card: 222 47% 11%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 3.9%;
+    --popover: 222 47% 11%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 160 84% 39%;
+    --primary: 143 76% 39%; /* Hospital Green for dark mode */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 217 33% 17%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 160 84% 39%;
+    --accent: 143 76% 39%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 160 84% 39%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 143 76% 39%;
 
     --medical-green: #10B981;
     --medical-urgent: #EF4444;
@@ -132,4 +176,31 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+}
+
+/* Custom scrollbar for hospital theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0066CC;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #004C99;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
